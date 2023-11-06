@@ -18,7 +18,7 @@
   <lib desc="#BFH-Praktika" name="9"/>
   <lib desc="#Input/Output-Extra" name="10"/>
   <lib desc="#Soc" name="11"/>
-  <main name="stack"/>
+  <main name="main"/>
   <options>
     <a name="gateUndefined" val="ignore"/>
     <a name="simlimit" val="1000"/>
@@ -51,84 +51,59 @@
     <tool lib="4" name="D Flip-Flop"/>
     <tool lib="4" name="Register"/>
   </toolbar>
-  <circuit name="test">
-    <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="test"/>
+  <circuit name="main">
+    <a name="circuit" val="main"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="4.0"/>
-    <comp lib="0" loc="(160,400)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="label" val="D"/>
+    <comp lib="0" loc="(180,200)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="RESET"/>
+      <a name="tristate" val="true"/>
     </comp>
-    <comp lib="0" loc="(160,460)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="label" val="C"/>
+    <comp lib="0" loc="(180,240)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="INDEX"/>
+      <a name="tristate" val="true"/>
+      <a name="width" val="3"/>
     </comp>
-    <comp lib="4" loc="(210,390)" name="D Flip-Flop">
-      <a name="appearance" val="logisim_evolution"/>
-      <a name="trigger" val="high"/>
+    <comp lib="0" loc="(200,180)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="CLK"/>
+      <a name="tristate" val="true"/>
     </comp>
-    <comp lib="4" loc="(290,390)" name="D Flip-Flop">
-      <a name="appearance" val="logisim_evolution"/>
-      <a name="trigger" val="high"/>
+    <comp lib="0" loc="(200,220)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="COMMAND"/>
+      <a name="tristate" val="true"/>
+      <a name="width" val="2"/>
     </comp>
-    <comp lib="4" loc="(370,390)" name="D Flip-Flop">
-      <a name="appearance" val="logisim_evolution"/>
-      <a name="trigger" val="high"/>
+    <comp lib="0" loc="(310,350)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="IDATA"/>
+      <a name="tristate" val="true"/>
+      <a name="width" val="4"/>
     </comp>
-    <comp loc="(410,100)" name="D_trigger_high"/>
-    <comp loc="(410,200)" name="D_trigger_back"/>
-    <comp loc="(410,300)" name="D_trigger_front"/>
-    <comp loc="(640,100)" name="D_trigger_high"/>
-    <comp loc="(640,200)" name="D_trigger_back"/>
-    <comp loc="(640,300)" name="D_trigger_front"/>
-    <comp loc="(870,100)" name="D_trigger_high"/>
-    <comp loc="(870,200)" name="D_trigger_back"/>
-    <comp loc="(870,300)" name="D_trigger_front"/>
-    <wire from="(160,100)" to="(160,200)"/>
-    <wire from="(160,100)" to="(190,100)"/>
-    <wire from="(160,200)" to="(160,300)"/>
-    <wire from="(160,200)" to="(190,200)"/>
-    <wire from="(160,300)" to="(160,400)"/>
-    <wire from="(160,300)" to="(190,300)"/>
-    <wire from="(160,400)" to="(200,400)"/>
-    <wire from="(160,460)" to="(180,460)"/>
-    <wire from="(180,120)" to="(180,160)"/>
-    <wire from="(180,120)" to="(190,120)"/>
-    <wire from="(180,160)" to="(180,220)"/>
-    <wire from="(180,160)" to="(420,160)"/>
-    <wire from="(180,220)" to="(180,260)"/>
-    <wire from="(180,220)" to="(190,220)"/>
-    <wire from="(180,260)" to="(180,320)"/>
-    <wire from="(180,260)" to="(420,260)"/>
-    <wire from="(180,320)" to="(180,360)"/>
-    <wire from="(180,320)" to="(190,320)"/>
-    <wire from="(180,360)" to="(180,440)"/>
-    <wire from="(180,360)" to="(410,360)"/>
-    <wire from="(180,440)" to="(180,460)"/>
-    <wire from="(180,440)" to="(200,440)"/>
-    <wire from="(180,460)" to="(280,460)"/>
-    <wire from="(260,400)" to="(280,400)"/>
-    <wire from="(280,440)" to="(280,460)"/>
-    <wire from="(280,460)" to="(360,460)"/>
-    <wire from="(340,400)" to="(360,400)"/>
-    <wire from="(360,440)" to="(360,460)"/>
-    <wire from="(410,100)" to="(420,100)"/>
-    <wire from="(410,200)" to="(420,200)"/>
-    <wire from="(410,300)" to="(420,300)"/>
-    <wire from="(410,320)" to="(410,360)"/>
-    <wire from="(410,320)" to="(420,320)"/>
-    <wire from="(410,360)" to="(650,360)"/>
-    <wire from="(420,120)" to="(420,160)"/>
-    <wire from="(420,160)" to="(650,160)"/>
-    <wire from="(420,220)" to="(420,260)"/>
-    <wire from="(420,260)" to="(650,260)"/>
-    <wire from="(640,100)" to="(650,100)"/>
-    <wire from="(640,200)" to="(650,200)"/>
-    <wire from="(640,300)" to="(650,300)"/>
-    <wire from="(650,120)" to="(650,160)"/>
-    <wire from="(650,220)" to="(650,260)"/>
-    <wire from="(650,320)" to="(650,360)"/>
+    <comp lib="0" loc="(370,350)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="ODATA"/>
+      <a name="output" val="true"/>
+      <a name="tristate" val="true"/>
+      <a name="width" val="4"/>
+    </comp>
+    <comp loc="(440,180)" name="stack"/>
+    <wire from="(180,200)" to="(220,200)"/>
+    <wire from="(180,240)" to="(220,240)"/>
+    <wire from="(200,180)" to="(220,180)"/>
+    <wire from="(200,220)" to="(220,220)"/>
+    <wire from="(220,260)" to="(220,320)"/>
+    <wire from="(220,320)" to="(330,320)"/>
+    <wire from="(310,350)" to="(330,350)"/>
+    <wire from="(330,320)" to="(330,350)"/>
+    <wire from="(350,320)" to="(350,350)"/>
+    <wire from="(350,320)" to="(440,320)"/>
+    <wire from="(350,350)" to="(370,350)"/>
+    <wire from="(440,180)" to="(440,320)"/>
   </circuit>
   <circuit name="stack">
     <a name="appearance" val="logisim_evolution"/>
@@ -143,6 +118,10 @@
       <a name="output" val="true"/>
       <a name="tristate" val="true"/>
       <a name="width" val="4"/>
+    </comp>
+    <comp lib="0" loc="(150,100)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="CLK"/>
     </comp>
     <comp lib="0" loc="(150,140)" name="Pin">
       <a name="appearance" val="classic"/>
@@ -162,10 +141,6 @@
       <a name="appearance" val="classic"/>
       <a name="label" val="IDATA"/>
       <a name="width" val="4"/>
-    </comp>
-    <comp lib="0" loc="(150,90)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="CLK"/>
     </comp>
     <comp lib="0" loc="(240,220)" name="Splitter">
       <a name="appear" val="right"/>
@@ -198,35 +173,35 @@
       <a name="size" val="30"/>
       <a name="width" val="4"/>
     </comp>
-    <comp lib="8" loc="(247,108)" name="Text">
+    <comp lib="8" loc="(245,105)" name="Text">
       <a name="font" val="SansSerif bold 10"/>
       <a name="halign" val="left"/>
       <a name="text" val="01 - push"/>
     </comp>
-    <comp lib="8" loc="(247,118)" name="Text">
+    <comp lib="8" loc="(245,115)" name="Text">
       <a name="font" val="SansSerif bold 10"/>
       <a name="halign" val="left"/>
       <a name="text" val="10 - pop"/>
     </comp>
-    <comp lib="8" loc="(247,128)" name="Text">
+    <comp lib="8" loc="(245,125)" name="Text">
       <a name="font" val="SansSerif bold 10"/>
       <a name="halign" val="left"/>
       <a name="text" val="11 - get"/>
     </comp>
-    <comp lib="8" loc="(247,98)" name="Text">
+    <comp lib="8" loc="(245,95)" name="Text">
       <a name="font" val="SansSerif bold 10"/>
       <a name="halign" val="left"/>
       <a name="text" val="00 - nop"/>
     </comp>
-    <comp lib="8" loc="(444,108)" name="Text">
+    <comp lib="8" loc="(440,105)" name="Text">
       <a name="font" val="SansSerif plain 10"/>
       <a name="text" val="get"/>
     </comp>
-    <comp lib="8" loc="(444,127)" name="Text">
+    <comp lib="8" loc="(440,125)" name="Text">
       <a name="font" val="SansSerif plain 10"/>
       <a name="text" val="pop"/>
     </comp>
-    <comp lib="8" loc="(445,148)" name="Text">
+    <comp lib="8" loc="(445,145)" name="Text">
       <a name="font" val="SansSerif plain 10"/>
       <a name="text" val="push"/>
     </comp>
@@ -235,21 +210,21 @@
     <comp loc="(450,180)" name="DDDD_AND_A"/>
     <comp loc="(450,230)" name="DDDD_AND_A"/>
     <comp loc="(550,260)" name="HEAD"/>
-    <comp loc="(790,240)" name="quad_SUB_mod_E"/>
+    <comp loc="(790,240)" name="SUB_mod_E"/>
     <wire from="(1020,200)" to="(1030,200)"/>
+    <wire from="(150,100)" to="(230,100)"/>
     <wire from="(150,140)" to="(160,140)"/>
     <wire from="(150,180)" to="(240,180)"/>
     <wire from="(150,220)" to="(240,220)"/>
     <wire from="(150,260)" to="(170,260)"/>
-    <wire from="(150,90)" to="(230,90)"/>
     <wire from="(160,140)" to="(160,370)"/>
     <wire from="(160,370)" to="(280,370)"/>
     <wire from="(170,260)" to="(170,360)"/>
     <wire from="(170,360)" to="(790,360)"/>
+    <wire from="(230,100)" to="(230,150)"/>
     <wire from="(230,150)" to="(230,300)"/>
     <wire from="(230,150)" to="(240,150)"/>
     <wire from="(230,300)" to="(330,300)"/>
-    <wire from="(230,90)" to="(230,150)"/>
     <wire from="(260,430)" to="(270,430)"/>
     <wire from="(270,390)" to="(270,430)"/>
     <wire from="(270,390)" to="(280,390)"/>
@@ -897,7 +872,6 @@
     <comp lib="0" loc="(540,270)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
-      <a name="label" val="SUM"/>
       <a name="output" val="true"/>
       <a name="width" val="4"/>
     </comp>
@@ -1006,9 +980,9 @@
     <comp loc="(590,150)" name="mod_E"/>
     <wire from="(150,170)" to="(150,180)"/>
   </circuit>
-  <circuit name="quad_SUB_mod_E">
+  <circuit name="SUB_mod_E">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="quad_SUB_mod_E"/>
+    <a name="circuit" val="SUB_mod_E"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="4.0"/>
     <comp lib="0" loc="(160,210)" name="Pin">
@@ -1283,7 +1257,7 @@
       <a name="size" val="30"/>
       <a name="width" val="4"/>
     </comp>
-    <comp lib="8" loc="(208,492)" name="Text">
+    <comp lib="8" loc="(205,490)" name="Text">
       <a name="text" val="Извините."/>
     </comp>
     <comp loc="(440,130)" name="DDDD_AND_A"/>
