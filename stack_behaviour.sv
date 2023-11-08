@@ -37,7 +37,7 @@ module stack_behaviour_normal (
                 io_data = stack[top_index];
                 top_index = (top_index + 4) % 5;
             end
-            `GET: io_data = stack[(top_index + 5 - INDEX % 5) % 5];
+            `GET: io_data = stack[(top_index + 15 - INDEX) % 5];
             default: ;
         endcase
     end
