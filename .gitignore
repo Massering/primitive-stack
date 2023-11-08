@@ -1,2 +1,7 @@
 *.out
 *.csv
+st_tb.sv
+tempCodeRunnerFile.sv
+tb.sv.bak
+tb.sv
+stack_behaviour_v2.txt
