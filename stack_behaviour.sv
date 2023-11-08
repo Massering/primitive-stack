@@ -12,7 +12,7 @@ module stack_behaviour_normal (
     );
 
     reg [3:0] stack[4:0];
-    reg [2:0] top_index;
+    integer top_index;
 
     reg [3:0] io_data;
     assign IO_DATA = io_data;
@@ -20,7 +20,7 @@ module stack_behaviour_normal (
     always @ (RESET)
     begin
         $display("RESET");
-        top_index = 3'b000;
+        top_index = 0;
         for (integer i = 0; i < 5; i = i + 1) begin
             stack[i] = 4'b0000;
         end
@@ -30,14 +30,14 @@ module stack_behaviour_normal (
     begin
         case (COMMAND)
             `PUSH: begin
-                top_index <= (top_index + 1) % 5;
-                stack[top_index] <= IO_DATA;
+                top_index = (top_index + 1) % 5;
+                stack[top_index] = IO_DATA;
             end
             `POP: begin
-                io_data <= stack[top_index];
-                top_index <= (top_index + 4) % 5;
+                io_data = stack[top_index];
+                top_index = (top_index + 4) % 5;
             end
-            `GET: io_data <= stack[(top_index + 5 - INDEX % 5) % 5];
+            `GET: io_data = stack[(top_index + 5 - INDEX % 5) % 5];
             default: ;
         endcase
     end
