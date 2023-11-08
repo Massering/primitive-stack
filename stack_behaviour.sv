@@ -19,7 +19,6 @@ module stack_behaviour_normal (
 
     always @ (RESET)
     begin
-        $display("RESET");
         top_index = 0;
         for (integer i = 0; i < 5; i = i + 1) begin
             stack[i] = 4'b0000;
@@ -30,20 +29,25 @@ module stack_behaviour_normal (
     begin
         case (COMMAND)
             `PUSH: begin
-                top_index = (top_index + 1) % 5;
                 stack[top_index] = IO_DATA;
             end
             `POP: begin
                 io_data = stack[top_index];
-                top_index = (top_index + 4) % 5;
             end
             `GET: io_data = stack[(top_index + 15 - INDEX) % 5];
-            default: ;
         endcase
     end
 
     always @ (negedge CLK) 
     begin
         io_data <= 4'bZZZZ;
+        case (COMMAND)
+            `PUSH: begin
+                top_index = (top_index + 1) % 5;
+            end
+            `POP: begin
+                top_index = (top_index + 4) % 5;
+            end
+        endcase
     end
 endmodule
