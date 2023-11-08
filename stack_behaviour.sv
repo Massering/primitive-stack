@@ -30,14 +30,14 @@ module stack_behaviour_normal (
     begin
         case (COMMAND)
             `PUSH: begin
-                    top_index <= (top_index + 1) % 5;
-                    stack[top_index] <= IO_DATA;
+                top_index <= (top_index + 1) % 5;
+                stack[top_index] <= IO_DATA;
             end
             `POP: begin
                 io_data <= stack[top_index];
-                top_index <= (top_index - 1 + 5) % 5;
+                top_index <= (top_index + 4) % 5;
             end
-            `GET: io_data <= stack[top_index - INDEX];
+            `GET: io_data <= stack[(top_index + 5 - INDEX % 5) % 5];
             default: ;
         endcase
     end

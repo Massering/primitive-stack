@@ -395,7 +395,9 @@ module MEMORY (
     wire[3:0] D6;
     wire[3:0] D7;
     wire[3:0] D8;
-    DEMUX_3_to_8 DEMUX_OUT(out0, out1, out2, out3, out4, out5, out6, out7, GET, INDEX);
+    wire[3:0] DECR_INDEX;
+    decrement_mod_5 decrement(DECR_INDEX, INDEX);
+    DEMUX_3_to_8 DEMUX_OUT(out0, out1, out2, out3, out4, out5, out6, out7, GET, DECR_INDEX);
     DDDD_AND_A D_AND_A_O0(D0, odata0, out0);
     DDDD_AND_A D_AND_A_O1(D1, odata1, out1);
     DDDD_AND_A D_AND_A_O2(D2, odata2, out2);
@@ -445,26 +447,13 @@ module HEAD(
 
 endmodule
 
-module stack_structural_easy(
-    output wire[3:0] O_DATA, 
-    input wire RESET, 
-    input wire CLK, 
-    input wire[1:0] COMMAND, 
-    input wire[2:0] INDEX,
-    input wire[3:0] I_DATA
-    ); 
-
-endmodule
-
-
-
 module stack_structural_normal(
     inout wire[3:0] IO_DATA, 
     input wire RESET, 
     input wire CLK, 
     input wire[1:0] COMMAND,
     input wire[2:0] INDEX
-    ); 
+    );
 
     wire[3:0] INDEX_4;
     or (INDEX_4[0], INDEX[0]);
@@ -472,14 +461,9 @@ module stack_structural_normal(
     or (INDEX_4[2], INDEX[2]);
     or (INDEX_4[3], 1'b0);
 
-    wire[3:0] Y_pop;
-    wire[3:0] Y_get;
     wire[3:0] Y;
-
     decoder_2_to_4 OP_decoder(is_nop, is_push, is_pop, is_get, COMMAND);
-    DDDD_AND_A DDDD_AND_A_POP(Y_pop, 4'b0100, is_pop);
-    DDDD_AND_A DDDD_AND_A_GET(Y_get, INDEX_4, is_get);
-    or4 OR_Y(Y, Y_pop, Y_get);
+    DDDD_AND_A DDDD_AND_A_GET(Y, INDEX_4, is_get);
     
     or (get, is_get, is_pop);
     or (set, is_push);
