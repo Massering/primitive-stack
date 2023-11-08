@@ -20,9 +20,9 @@ module X_if_F_else_Z(
 endmodule
 
 module DATA_if_F_else_ZZZZ(
-    input[3:0] DATA,
-    input F,
-    output[3:0] ODATA
+    inout[3:0] DATA,
+    inout[3:0] ODATA,
+    input F
 );
     X_if_F_else_Z MOS1(ODATA[0], F, DATA[0]);
     X_if_F_else_Z MOS0(ODATA[1], F, DATA[1]);
@@ -362,7 +362,7 @@ module MEMORY (
     wire[4:0] set;
     wire[4:0] IN;
     DEMUX_3_to_8 DEMUX_IN(in[0], in[1], in[2], in[3], in[4], in[5], in[6], in[7], SET, INDEX);
-    byte_U_to_0 to_0(io_data);
+    byte_U_to_0 to_0(IO_DATA);
     DDDD_AND_A D_AND_A(idata, IO_DATA, NRESET);
     and (IN[0], in[0], CLK);
     and (IN[1], in[1], CLK);
@@ -406,7 +406,7 @@ module MEMORY (
     or4 OR7(D7, D4, D5);
     or4 OR8(D8, D6, D7);
 
-    DATA_if_F_else_ZZZZ IF(IO_DATA, GET, D8);
+    DATA_if_F_else_ZZZZ IF(IO_DATA, D8, GET);
 endmodule
 
 module HEAD(
