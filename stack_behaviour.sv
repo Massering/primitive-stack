@@ -19,9 +19,11 @@ module stack_behaviour_normal (
 
     always @ (RESET)
     begin
-        top_index = 0;
-        for (integer i = 0; i < 5; i = i + 1) begin
-            stack[i] = 4'b0;
+        if (RESET) begin
+            top_index = 0;
+            for (integer i = 0; i < 5; i = i + 1) begin
+                stack[i] = 4'b0;
+            end
         end
     end
 
