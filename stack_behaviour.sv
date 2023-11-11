@@ -11,13 +11,13 @@ module stack_behaviour_normal (
     input wire[2:0] INDEX
     );
 
-    reg [3:0] stack[4:0];
+    reg[3:0] stack[4:0];
     integer top_index;
 
-    reg [3:0] io_data;
+    reg[3:0] io_data;
     assign IO_DATA = io_data;
 
-    always @ (RESET)
+    always @ (CLK, IO_DATA, RESET, INDEX, COMMAND)
     begin
         if (RESET) begin
             top_index = 0;
@@ -25,11 +25,7 @@ module stack_behaviour_normal (
                 stack[i] = 4'b0;
             end
         end
-    end
-
-    always @ (CLK, IO_DATA, INDEX, COMMAND)
-    begin
-        if (CLK) begin
+        else if (CLK) begin
             case (COMMAND)
                 `PUSH: begin
                     stack[(top_index + 1) % 5] = IO_DATA;
